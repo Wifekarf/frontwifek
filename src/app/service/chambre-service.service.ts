@@ -9,7 +9,7 @@ import { Chambre } from '../model/chambre.model/chambre.model.module';
   providedIn: 'root',
 })
 export class ChambreService {
-  private apiUrl = 'http://192.168.50.4:8089/tpfoyer/chambre';
+  private apiUrl = 'http://192.168.73.167:8089/tpfoyer/chambre';
 
   constructor(private http: HttpClient) {}
 
