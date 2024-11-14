@@ -14,19 +14,19 @@ export class ChambreService {
   constructor(private http: HttpClient) {}
 
   getChambres(): Observable<Chambre[]> {
-    return this.http.get<Chambre[]>(`${this.apiUrl}/retrieve-all-chambres`);
+    return this.http.get<Chambre[]>(`${this.apiUrl}/retrieveAllChambres`);
   }
 
   getChambreById(chambreId: number): Observable<Chambre> {
-    return this.http.get<Chambre>(`${this.apiUrl}/retrieve-chambre/${chambreId}`);
+    return this.http.get<Chambre>(`${this.apiUrl}/retrieveChambre/${chambreId}`);
   }
 
   addChambre(chambre: Chambre): Observable<Chambre> {
-    return this.http.post<Chambre>(`${this.apiUrl}/add-chambre`, chambre);
+    return this.http.post<Chambre>(`${this.apiUrl}/addChambre`, chambre);
   }
 
   updateChambre(chambre: Chambre): Observable<Chambre> {
-    return this.http.put<Chambre>(`${this.apiUrl}/modify-chambre`, chambre);
+    return this.http.put<Chambre>(`${this.apiUrl}/updateChambre`, chambre);
   }
 
   deleteChambre(chambreId: number): Observable<void> {
