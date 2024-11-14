@@ -1,0 +1,50 @@
+<h2>Room List</h2>
+
+<!-- Form for adding a new room -->
+<div>
+  <h3>Add New Room</h3>
+  <input [(ngModel)]="newChambre.numeroChambre" placeholder="Room Number" />
+  <input [(ngModel)]="newChambre.typeC" placeholder="Room Type" />
+  <button (click)="addChambre()">Add Room</button>
+</div>
+
+<!-- Table displaying all rooms -->
+<table>
+  <thead>
+    <tr>
+      <th>Room ID</th>
+      <th>Room Number</th>
+      <th>Room Type</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let chambre of chambres">
+      <td>{{ chambre.idChambre }}</td>
+      <td>
+        <span *ngIf="!isEditing || chambre.idChambre !== selectedChambre?.idChambre">{{ chambre.numeroChambre }}</span>
+        <input *ngIf="isEditing && chambre.idChambre === selectedChambre?.idChambre"
+               [(ngModel)]="selectedChambre!.numeroChambre" placeholder="Room Number" />
+      </td>
+      <td>
+        <span *ngIf="!isEditing || chambre.idChambre !== selectedChambre?.idChambre">{{ chambre.typeC }}</span>
+        <input *ngIf="isEditing && chambre.idChambre === selectedChambre?.idChambre"
+               [(ngModel)]="selectedChambre!.typeC" placeholder="Room Type" />
+      </td>
+      <td>
+        <button *ngIf="!isEditing || chambre.idChambre !== selectedChambre?.idChambre" (click)="editChambre(chambre)">
+          Edit
+        </button>
+        <button (click)="deleteChambre(chambre.idChambre)">
+          Delete
+        </button>
+        <button *ngIf="isEditing && chambre.idChambre === selectedChambre?.idChambre" (click)="saveChambre()">
+          Save
+        </button>
+        <button *ngIf="isEditing && chambre.idChambre === selectedChambre?.idChambre" (click)="cancelEdit()">
+          Cancel
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
